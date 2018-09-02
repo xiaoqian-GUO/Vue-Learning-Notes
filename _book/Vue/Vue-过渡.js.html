@@ -1,0 +1,788 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Vue-过渡 · xiaoqian's notes</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="xiaoqian ">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchors/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="Vue-单文件组件.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+    
+        
+        <li>
+            <a href="https://github.com/xiaoqian-GUO/Vue-Learning-Notes" target="_blank" class="custom-link">Home</a>
+        </li>
+    
+    
+
+    
+    <li class="divider"></li>
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    首页
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="vue-20180613-GXQ.html">
+            
+                <a href="vue-20180613-GXQ.html">
+            
+                    
+                    Vue-20180613
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="vue-20180620-GXQ.html">
+            
+                <a href="vue-20180620-GXQ.html">
+            
+                    
+                    Vue-20180620
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="vue-20180621-GXQ.html">
+            
+                <a href="vue-20180621-GXQ.html">
+            
+                    
+                    Vue-20180621
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="Vue-单文件组件.html">
+            
+                <a href="Vue-单文件组件.html">
+            
+                    
+                    Vue-单文件组件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter active" data-level="6.1" data-path="Vue-过渡.js.html">
+            
+                <a href="Vue-过渡.js.html">
+            
+                    
+                    Vue-过渡
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Vue-过渡</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <blockquote>
+<p>&#x8FC7;&#x6E21;</p>
+<h5 id="&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6E21;&#x7684;&#x7C7B;&#x540D;"><a name="&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6E21;&#x7684;&#x7C7B;&#x540D;" class="anchor-navigation-ex-anchor" href="#&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6E21;&#x7684;&#x7C7B;&#x540D;"><i class="fa fa-link" aria-hidden="true"></i></a>&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6E21;&#x7684;&#x7C7B;&#x540D;</h5>
+<ol>
+<li>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E00;&#x4E0B;&#x7279;&#x6027;&#x6765;&#x81EA;&#x5B9A;&#x4E49;&#x8FC7;&#x6E21;&#x7C7B;&#x540D;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x4E8E;&#x666E;&#x901A;&#x7684;&#x7C7B;&#x540D;&#xFF1A;
+```
+enter-class
+enter-active-class
+enter-to-class
+leave-class
+leave-active-class
+leave-to-class</li>
+</ol>
+</blockquote>
+<p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x4E0A;&#x8FF0;&#x7279;&#x6027;&#x7684;&#x503C;&#xFF0C;&#x6765;&#x5236;&#x5B9A;&#x7279;&#x6B8A;&#x7684;&#x7C7B;&#xFF0C;&#x5E76;&#x4E14;&#x7ED3;&#x5408;&#x7B2C;&#x4E09;&#x65B9;&#x52A8;&#x753B;&#x5E93;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x5341;&#x5206;&#x6709;&#x7528;</p>
+<div id="example-3">
+  <button @click="show = !show">
+    Toggle render
+  </button>
+  <transition name="custom-classes-transition" enter-active-class="animated tada" leave-active-class="animated bounceOutRight">
+    <p v-if="show">hello</p>
+  </transition>
+```
+2. &#x540C;&#x65F6;&#x4F7F;&#x7528;&#x8FC7;&#x6E21;transition&#x548C;&#x52A8;&#x753B;animation
+```
+&#x53EF;&#x4EE5;&#x901A;&#x8FC7;duration&#x5C5E;&#x6027;&#x6765;&#x5B9A;&#x5236;&#x4E00;&#x4E2A;&#x663E;&#x6027;&#x7684;&#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;
+
+<transition :duration="3000"></transition>
+
+&#x4E5F;&#x53EF;&#x4EE5;&#x5728;duration&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x6307;&#x5B9A;&#x8FDB;&#x5165;&#x548C;&#x79FB;&#x51FA;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;
+
+<transition :duration="{enter:500,leave:800}"></transition>
+```
+
+##### JavaScript&#x94A9;&#x5B50;
+1. &#x53EF;&#x4EE5;&#x5728;&#x5C5E;&#x6027;&#x4E2D;&#x58F0;&#x660E;javascript&#x94A9;&#x5B50;
+```
+// &#x94A9;&#x5B50;&#x51FD;&#x6570;
+before-enter
+enter
+after-enter
+enter-cancelled
+
+before-leave
+leave
+after-leave
+leave-cancelled
+
+//&#x4F8B;&#x5B50;
+<transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:after-enter="afterEnter" v-on:enter-cancelled="enterCancelled" v-on:before-leave="beforeLeave" v-on:leave="leave" v-on:after-leave="afterLeave" v-on:leave-cancelled="leaveCancelled">
+  <!-- ... -->
+</transition>
+
+// &#x8C03;&#x7528;
+methods: {
+  // --------
+  // &#x8FDB;&#x5165;&#x4E2D;
+  // --------
+
+  beforeEnter: function (el) {
+    // ...
+  },
+  // &#x6B64;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x9009;&#x9879;&#x7684;&#x8BBE;&#x7F6E;
+  // &#x4E0E; CSS &#x7ED3;&#x5408;&#x65F6;&#x4F7F;&#x7528;
+  enter: function (el, done) {
+    // ...
+    done()
+  },
+  afterEnter: function (el) {
+    // ...
+  },
+  enterCancelled: function (el) {
+    // ...
+  },
+
+  // --------
+  // &#x79BB;&#x5F00;&#x65F6;
+  // --------
+
+  beforeLeave: function (el) {
+    // ...
+  },
+  // &#x6B64;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x662F;&#x53EF;&#x9009;&#x9879;&#x7684;&#x8BBE;&#x7F6E;
+  // &#x4E0E; CSS &#x7ED3;&#x5408;&#x65F6;&#x4F7F;&#x7528;
+  leave: function (el, done) {
+    // ...
+    done()
+  },
+  afterLeave: function (el) {
+    // ...
+  },
+  // leaveCancelled &#x53EA;&#x7528;&#x4E8E; v-show &#x4E2D;
+  leaveCancelled: function (el) {
+    // ...
+  }
+}
+
+&#x6CE8;&#x610F;&#xFF1A;
+1. &#x5F53;&#x53EA;&#x7528;javascript&#x8FC7;&#x6E21;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;enter&#x548C;leave&#x4E2D;&#x5FC5;&#x987B;&#x4F7F;&#x7528;done&#x8FDB;&#x884C;&#x56DE;&#x8C03;&#xFF0C;&#x5426;&#x5219;&#xFF0C;&#x5B83;&#x4EEC;&#x5C06;&#x88AB;&#x540C;&#x6B65;&#x8C03;&#x7528;&#xFF0C;&#x8FC7;&#x6E21;&#x4F1A;&#x7ACB;&#x5373;&#x5B8C;&#x6210;
+2. &#x5BF9;&#x4E8E;&#x4EC5;&#x4F7F;&#x7528;javascript&#x8FC7;&#x6E21;&#x7684;&#x5143;&#x7D20;&#x6DFB;&#x52A0;v-bind:css=&quot;false&quot; Vue&#x4F1A;&#x8DF3;&#x8FC7;CSS&#x7684;&#x68C0;&#x6D4B;&#xFF0C;&#x8FD9;&#x4E5F;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x8FC7;&#x6E21;&#x8FC7;&#x7A0B;&#x4E2D;CSS&#x7684;&#x5F71;&#x54CD;
+3. 
+```
+##### &#x521D;&#x59CB;&#x6E32;&#x67D3;&#x7684;&#x8FC7;&#x6E21;
+1. &#x53EF;&#x4EE5;&#x901A;&#x8FC7;appear&#x7279;&#x6027;&#x6765;&#x8BBE;&#x7F6E;&#x8282;&#x70B9;&#x5728;&#x521D;&#x59CB;&#x6E32;&#x67D3;&#x7684;&#x8FC7;&#x6E21;
+```
+<transition appear="" appear-class="xxx" appear-to-class="xxx" appear-active-class="xxx">
+......
+</transition>
+
+//&#x81EA;&#x5B9A;&#x4E49;javascript&#x94A9;&#x5B50;
+<transition appear="" @before-appear="xxx" @appear="xxx" @after-appear="xxx" @appear-cancelled="xxx">
+</transition>
+```
+##### &#x591A;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x8FC7;&#x6E21;
+1. &#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x6807;&#x7B7E;&#x7684;&#x5143;&#x7D20;&#x5207;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x539F;&#x751F;&#x6807;&#x7B7E;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;v-if/v-else&#x6765;&#x663E;&#x5F0F;&#x5207;&#x6362;
+2. &#x5BF9;&#x4E8E;&#x76F8;&#x540C;&#x6807;&#x7B7E;&#x540D;&#x7684;&#x5143;&#x7D20;&#x5207;&#x6362;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;key&#x7279;&#x6027;&#x8BBE;&#x7F6E;&#x552F;&#x4E00;&#x7684;&#x503C;&#x6765;&#x6807;&#x8BB0;&#x8BA9;Vue&#x533A;&#x5206;&#x5B83;&#x4EEC;
+```
+<transition>
+<button v-bind:key="docState">
+
+</button>
+</transition>
+
+computed:{
+    //&#x8BA1;&#x7B97;&#x5C5E;&#x6027;
+    buttonMessage:function(){
+        switch(this.docState){
+            case &apos;saved&apos;: return &apos;Edit&apos;
+            case &apos;edited&apos;:return &apos;Save&apos;
+            case &apos;editing&apos;: return &apos;cancel&apos;
+        }
+    }
+}
+```
+##### &#x8FC7;&#x6E21;&#x6A21;&#x5F0F;
+```
+mode=&quot;in-out&quot; : &#x65B0;&#x5143;&#x7D20;&#x5148;&#x8FDB;&#x884C;&#x8FC7;&#x6E21;&#xFF0C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x5F53;&#x524D;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x79BB;&#x5F00;
+mode=&quot;out-in&quot; : &#x5F53;&#x524D;&#x5143;&#x7D20;&#x5148;&#x8FDB;&#x884C;&#x8FC7;&#x6E21;&#xFF0C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x65B0;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x8FDB;&#x5165;
+in-out&#x6A21;&#x5F0F;&#x4E0D;&#x4F1A;&#x7ECF;&#x5E38;&#x7528;&#x5230;&#xFF0C;&#x4F46;&#x5BF9;&#x4E8E;&#x4E00;&#x4E9B;&#x7A0D;&#x5FAE;&#x4E0D;&#x540C;&#x7684;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#x8FD8;&#x662F;&#x6709;&#x7528;&#x7684;
+
+<transition name="fade" mode="out-in">
+<!-- ... the buttons ... -->
+</transition>
+```
+##### &#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x8FC7;&#x6E21;
+1. &#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;key&#x7279;&#x6027;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;
+```
+<transition name="component-fade" mode="out-in">
+<component v-bind:is="view"></component>
+</transition>
+
+new Vue({
+    el:&quot;#transition-components-demo&quot;,
+    data:{
+        view:&apos;v-a&apos;,
+    },
+    components:{
+        &apos;v-a&apos;:{
+            template:&quot;<div>component a</div>&quot;,
+        },
+        &apos;v-b&apos;:{
+            template:&quot;<div>component b</div>&quot;,
+        }
+    }
+})
+```
+##### &#x5217;&#x8868;&#x8FC7;&#x6E21; transition-group
+1. &#x9700;&#x8981;key&#x5C5E;&#x6027;&#x63D0;&#x4F9B;&#x552F;&#x4E00;&#x7684;&#x5C5E;&#x6027;&#x503C;
+2. &#x8FC7;&#x6E21;&#x6A21;&#x5F0F;&#x4E0D;&#x53EF;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x518D;&#x76F8;&#x4E92;&#x5207;&#x6362;&#x7279;&#x6709;&#x7684;&#x5143;&#x7D20;
+```
+ <transition-group name="flip-list" tag="ul">
+    <li v-for="item in items" v-bind:key="item">
+
+    </li>
+ </transition-group>
+
+ <transition-group name="list-complete" tag="p">
+    <span v-for="item in items" v-bind:key="item" class="list-complete-item">
+
+    </span>
+  </transition-group> 
+
+```
+##### &#x5217;&#x8868;&#x7684;&#x4EA4;&#x9519;&#x8FC7;&#x6E21;
+1. &#x901A;&#x8FC7;data&#xFF0C;javascript&#x4EE5;&#x53CA;&#x6570;&#x7EC4;&#x7684;&#x5E38;&#x7528;&#x65B9;&#x6CD5;&#x7B49;&#x5B9E;&#x73B0;&#x5217;&#x8868;&#x7684;&#x8FC7;&#x6E21;
+```
+ <transition-group name="staggered-fade" tag="ul" v-bind:css="false" v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave">
+    <li v-for="(item, index) in computedList" v-bind:key="item.msg" v-bind:data-index="index"></li>
+  </transition-group>
+```
+#### &#x72B6;&#x6001;&#x8FC7;&#x6E21;
+1. &#x7ED3;&#x5408;vue&#x7684;&#x54CD;&#x5E94;&#x5F0F;&#x548C;&#x7EC4;&#x4EF6;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x6765;&#x5B9E;&#x73B0;&#x5207;&#x6362;&#x5143;&#x7D20;&#x7684;&#x8FC7;&#x6E21;&#x72B6;&#x6001;
+```
+&#x6BD4;&#x5982;&#xFF1A;
+&#x6570;&#x5B57;&#x548C;&#x8FD0;&#x7B97;
+&#x989C;&#x8272;&#x7684;&#x663E;&#x793A;
+SVG&#x8282;&#x70B9;&#x7684;&#x4F4D;&#x7F6E;
+&#x5143;&#x7D20;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x5176;&#x4ED6;&#x5C5E;&#x6027;
+```
+##### &#x72B6;&#x6001;&#x52A8;&#x753B;&#x4E0E;&#x4FA6;&#x542C;&#x5668;
+#### &#x53EF;&#x590D;&#x7528;&#x6027; &amp; &#x7EC4;&#x5408;
+##### &#x6DF7;&#x5165;(mixins): &#x4E00;&#x79CD;&#x5206;&#x53D1;Vue&#x7EC4;&#x4EF6;&#x4E2D;&#x53EF;&#x590D;&#x7528;&#x529F;&#x80FD;&#x7684;&#x975E;&#x5E38;&#x7075;&#x6D3B;&#x7684;&#x65B9;&#x5F0F;
+1. &#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x4EFB;&#x610F;&#x7EC4;&#x4EF6;&#x9009;&#x9879;&#xFF0C;&#x5F53;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x65F6;&#xFF0C;&#x6240;&#x6709;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x7684;&#x9009;&#x9879;&#x5C06;&#x88AB;&#x6DF7;&#x5165;&#x8BE5;&#x7EC4;&#x4EF6;&#x672C;&#x8EAB;&#x7684;&#x9009;&#x9879;
+```
+//&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;
+var myMixin={
+    created:function(){
+        this.hello();
+    },
+    methods:{
+        hello: function(){
+            console.log(&apos;hello from maxin!&apos;);
+        },
+    },
+};
+
+var component=Vue.extend({
+    maxins:[myMixin],
+});
+
+var component=new Component();    // &quot;hello from mixin!&quot;
+```
+
+2. &#x9009;&#x9879;&#x5408;&#x5E76;&#xFF1A;&#x5F53;&#x7EC4;&#x4EF6;&#x548C;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x542B;&#x6709;&#x540C;&#x540D;&#x9009;&#x9879;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x9009;&#x9879;&#x5C06;&#x4EE5;&#x6070;&#x5F53;&#x7684;&#x65B9;&#x5F0F;&#x6DF7;&#x5408;&#xFF1A;      &#x4F8B;&#x5982;&#x6570;&#x636E;&#x5BF9;&#x8C61;&#x5728;&#x5185;&#x90E8;&#x4F1A;&#x8FDB;&#x884C;&#x6D45;&#x5408;&#x5E76;(&#x4E00;&#x5C42;&#x5C5E;&#x6027;&#x6DF1;&#x5EA6;)&#xFF0C;&#x5728;&#x548C;&#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x53D1;&#x751F;&#x51B2;&#x7A81;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4EE5;&#x7EC4;&#x4EF6;&#x6570;&#x636E;&#x4F18;&#x5148;&#xFF1B;<font color="red">&#x548C;&#x5BF9;&#x8C61;&#x5C5E;&#x6027;&#x540E;&#x8005;&#x8986;&#x76D6;&#x524D;&#x8005;&#x7C7B;&#x4F3C;&#xFF1B;</font>
+3. <font color="blue">&#x6CE8;&#x610F;&#xFF1A;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x7684;&#x94A9;&#x5B50;&#x5C06;&#x5728;&#x7EC4;&#x4EF6;&#x81EA;&#x8EAB;&#x94A9;&#x5B50;&#x4E4B;&#x524D;&#x8C03;&#x7528;</font>
+```
+//&#x6DF7;&#x5165;&#x5BF9;&#x8C61;:&#x5B9A;&#x4E49;&#x9009;&#x9879;&#x4EE5;&#x53CA;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x7B49;
+var myMixin={
+    data: function(){
+        return {
+            messsage:&apos;goodbye&apos;,
+            foo:&apos;abc&apos;,
+        };
+    },
+};
+
+new Vue({
+    mixins:[myMixin],
+    data:{
+        message:&apos;goodbye&apos;,
+        bar:&apos;def&apos;,
+    },
+    created:function(){
+        console.log(this.$data);
+    }
+});
+```
+4. &#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x548C;&#x7EC4;&#x4EF6;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;
+```
+var mixin = {
+  created: function () {
+    console.log(&apos;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x7684;&#x94A9;&#x5B50;&#x88AB;&#x8C03;&#x7528;&apos;)
+  }
+}
+
+new Vue({
+  mixins: [mixin],
+  created: function () {
+    console.log(&apos;&#x7EC4;&#x4EF6;&#x94A9;&#x5B50;&#x88AB;&#x8C03;&#x7528;&apos;)
+  }
+})
+
+// =&gt; &quot;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#x7684;&#x94A9;&#x5B50;&#x88AB;&#x8C03;&#x7528;&quot;
+// =&gt; &quot;&#x7EC4;&#x4EF6;&#x94A9;&#x5B50;&#x88AB;&#x8C03;&#x7528;&quot;
+```
+5. <font color="red">&#x6CE8;&#x610F;&#xFF1A;Vue.extend() &#x548C; new Vue()&#x7684;&#x65B9;&#x5F0F;&#x91C7;&#x53D6;&#x76F8;&#x540C;&#x7684;&#x5408;&#x5E76;&#x7B56;&#x7565;&#xFF1B;</font>
+##### &#x5168;&#x5C40;&#x6DF7;&#x5165;&#xFF1A;&#x9700;&#x8981;&#x614E;&#x91CD;&#x4F7F;&#x7528;
+1. &#x53EF;&#x4EE5;&#x5168;&#x5C40;&#x6CE8;&#x518C;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#xFF0C;&#x4F46;&#x662F;&#x4E00;&#x65E6;&#x4F7F;&#x7528;&#x5168;&#x5C40;&#x6DF7;&#x5165;&#x5BF9;&#x8C61;&#xFF0C;&#x5C06;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x4E4B;&#x540E;&#x521B;&#x5EFA;&#x7684;Vue&#x5B9E;&#x4F8B;&#xFF0C;&#x4F7F;&#x7528;&#x6070;&#x5F53;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x5BF9;&#x8C61;&#x6CE8;&#x5165;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF1A;
+```
+// &#x4E3A;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x9009;&#x9879; &apos;myOption&apos; &#x6CE8;&#x5165;&#x4E00;&#x4E2A;&#x5904;&#x7406;&#x5668;&#x3002;
+Vue.mixin({
+  created: function () {
+    var myOption = this.$options.myOption
+    if (myOption) {
+      console.log(myOption)
+    }
+  }
+})
+
+new Vue({
+  myOption: &apos;hello!&apos;
+})
+// =&gt; &quot;hello!&quot;
+```
+##### &#x81EA;&#x5B9A;&#x4E49;&#x9009;&#x9879;&#x5408;&#x5E76;&#x7B56;&#x7565;
+1. &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5411;<font color="red">Vue.config.optionMergeStrategies</font>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;
+```
+Vue.config.optionMergeStrategies.myOption=function(toVal,fromVal){
+    // return mergedVal
+
+}
+
+//&#x4F8B;&#x5982;&#xFF1A;&#x5982;&#x679C;&#x60F3;&#x91C7;&#x7528;methods&#x7684;&#x5408;&#x5E76;&#x7B56;&#x7565;
+var strategies = Vue.config.optionMergeStrategies;
+strategies.myOption=strategies.methods;
+```
+#### &#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;
+1. Vue&#x5141;&#x8BB8;&#x6CE8;&#x518C;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5BF9;&#x666E;&#x901A;DOM&#x5143;&#x7D20;&#x8FDB;&#x884C;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x7528;&#x5230;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF1B;
+```
+//&#x6CE8;&#x518C;&#x7EC4;&#x4EF6;
+Vue.component(&apos;blog-post&apos;,{
+    props:[&apos;post&apos;],
+    template:`<div class="blog-post">
+        <h3 id=""><a name="" class="plugin-anchor" href="#"><i class="fa fa-link" aria-hidden="true"></i></a></h3>
+        <button v-on:click="$emit(&apos;enlarge&apos;,post.large)">&#x653E;&#x5927;</button>
+        <div v-html="post.content"></div>
+        <button v-on:click="$emit(&apos;smaller&apos;,post.small)">&#x7F29;&#x5C0F;</button>
+        <slot name="test"></slot>
+    </div>`,
+})
+```
+&#x5168;&#x5C40;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x548C;&#x6CE8;&#x518C;&#x5C40;&#x90E8;&#x6307;&#x4EE4;  
+```
+Vue.directive(&quot;focus&quot;,{
+    // &#x5F53;&#x88AB;&#x7ED1;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x5230;DOM&#x4E2D;&#x65F6;
+    inserted: function(el){
+        //&#x805A;&#x7126;&#x5143;&#x7D20;
+        el.focus();
+    },
+})
+
+//&#x6216;&#x8005; &#x6CE8;&#x518C;&#x5C40;&#x90E8;&#x6307;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x7EC4;&#x4EF6;&#x4E2D;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;directives&#x7684;&#x9009;&#x9879;
+directives: {
+    focus: {
+        //&#x6307;&#x4EE4;&#x7684;&#x5B9A;&#x4E49;
+        inserted: function(el){
+            el.focus();
+        }
+    }
+}
+
+// &#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#xFF1A;&#x53EF;&#x4EE5;&#x5728;&#x6A21;&#x7248;&#x4E2D;&#x7684;&#x4EFB;&#x4F55;&#x5143;&#x7D20;&#x4E0A;&#x4F7F;&#x7528;&#x65B0;&#x7684;v-focus&#x5C5E;&#x6027;
+
+<input v-focus="">
+```
+##### &#x94A9;&#x5B50;&#x51FD;&#x6570;
+1. &#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x5B9A;&#x4E49;&#x5BF9;&#x8C61;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#xFF1A;
+```
+bind&#xFF1A;&#x53EA;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x6307;&#x4EE4;&#x7B2C;&#x4E00;&#x6B21;&#x7ED1;&#x5B9A;&#x5230;&#x5143;&#x7D20;&#x65F6;&#x8C03;&#x7528;&#xFF1B;
+unbind&#xFF1A;&#x8C03;&#x7528;&#x4E00;&#x6B21;&#xFF0C;&#x6307;&#x4EE4;&#x4E0E;&#x5143;&#x7D20;&#x89E3;&#x7ED1;&#x65F6;&#x8C03;&#x7528;&#xFF1B;
+inserted&#xFF1A;&#x88AB;&#x7ED1;&#x5B9A;&#x5143;&#x7D20;&#x63D2;&#x5165;&#x7236;&#x8282;&#x70B9;&#x65F6;&#x8C03;&#x7528;&#xFF1B;
+update&#xFF1A;&#x672A;&#x786E;&#x5B9A;&#x662F;&#x5426;&#x5168;&#x90E8;&#x66F4;&#x65B0;&#x5B8C;&#x6210;
+componentUpdated&#xFF1A;&#x6307;&#x4EE4;&#x6240;&#x5728;&#x7EC4;&#x4EF6;&#x7684;VNode&#x53CA;&#x5176;&#x5B50;VNode&#x5168;&#x90E8;&#x66F4;&#x65B0;&#x540E;&#x8C03;&#x7528;&#xFF1B;
+```
+##### &#x94A9;&#x5B50;&#x51FD;&#x6570;&#x53C2;&#x6570;
+```
+el: &#x6307;&#x4EE4;&#x6240;&#x7ED1;&#x5B9A;&#x7684;&#x5143;&#x7D20;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;DOM
+
+binding: &#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x5305;&#x542B;&#x4EE5;&#x4E0B;&#x5C5E;&#x6027;&#xFF1A;
+  name&#xFF1A;&#x6307;&#x4EE4;&#x540D;&#xFF0C;&#x4E0D;&#x5305;&#x62EC;v-&#x524D;&#x7F00;
+  value&#xFF1A;&#x6307;&#x4EE4;&#x7684;&#x7ED1;&#x5B9A;&#x503C;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;v-my-directive=&quot;1 + 1&quot; &#x4E2D;&#xFF0C;&#x7ED1;&#x5B9A;&#x503C;&#x4E3A; 2&#xFF1B;
+  oldValue&#xFF1A;&#x6307;&#x4EE4;&#x7ED1;&#x5B9A;&#x7684;&#x524D;&#x4E00;&#x4E2A;&#x503C;&#xFF0C;&#x4EC5;&#x5728;update&#x548C;componentUpdated&#x94A9;&#x5B50;&#x4E2D;&#x53EF;&#x7528;&#xFF1B;
+  expression&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#x5F62;&#x5F0F;&#x7684;&#x6307;&#x4EE4;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F8B;&#x5982; v-my-directive=&quot;1 + 1&quot; &#x4E2D;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4E3A; &quot;1 + 1&quot;
+  arg&#xFF1A;&#x4F20;&#x7ED9;&#x6307;&#x4EE4;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x9009;&#x3002;&#x4F8B;&#x5982; v-my-directive:foo &#x4E2D;&#xFF0C;&#x53C2;&#x6570;&#x4E3A; &quot;foo&quot;
+  modifiers&#xFF1A;&#x6307;&#x4EE4;&#x7684;&#x4FEE;&#x9970;&#x7B26;&#x5BF9;&#x8C61;&#xFF0C;&#x4F8B;&#x5982;&#xFF1A;v-my-directive.foo.bar &#x4E2D;&#xFF0C;&#x4FEE;&#x9970;&#x7B26;&#x5BF9;&#x8C61;&#x4E3A; { foo: true, bar: true }
+
+vnode: Vue&#x7F16;&#x8BD1;&#x751F;&#x6210;&#x7684;&#x865A;&#x62DF;&#x8282;&#x70B9;
+
+oldVnode: &#x4E0A;&#x4E00;&#x4E2A;&#x865A;&#x62DF;&#x8282;&#x70B9;&#xFF0C;&#x4EC5;&#x5728;update&#x548C;componentUpdated&#x94A9;&#x5B50;&#x4E2D;&#x4F7F;&#x7528;
+```
+&#x9664;&#x4E86;el&#x4E4B;&#x5916;&#xFF0C;&#x5176;&#x4ED6;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x53EA;&#x8BFB;&#x7684;
+```
+<div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+
+<p>Vue.directive(&apos;demo&apos;, {
+  bind: function (el, binding, vnode) {
+    var s = JSON.stringify
+    el.innerHTML =
+      &apos;name: &apos;       + s(binding.name) + &apos;<br>&apos; +
+      &apos;value: &apos;      + s(binding.value) + &apos;<br>&apos; +
+      &apos;expression: &apos; + s(binding.expression) + &apos;<br>&apos; +
+      &apos;argument: &apos;   + s(binding.arg) + &apos;<br>&apos; +
+      &apos;modifiers: &apos;  + s(binding.modifiers) + &apos;<br>&apos; +
+      &apos;vnode keys: &apos; + Object.keys(vnode).join(&apos;, &apos;)
+  }
+})</p>
+<p>new Vue({
+  el: &apos;#hook-arguments-example&apos;,
+  data: {
+    message: &apos;hello!&apos;
+  }
+})
+name: &quot;demo&quot;
+value: &quot;hello!&quot;
+expression: &quot;message&quot;
+argument: &quot;foo&quot;
+modifiers: {&quot;a&quot;:true,&quot;b&quot;:true}
+vnode keys: tag, data, children, text, elm, ns, context, fnContext, fnOptions, fnScopeId, key, componentOptions, componentInstance, parent, raw, isStatic, isRootInsert, isComment, isCloned, isOnce, asyncFactory, asyncMeta, isAsyncPlaceholder</p>
+<pre><code>##### &#x51FD;&#x6570;&#x7B80;&#x5199;
+1. &#x5728;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x5FFD;&#x7565;&#x6389;&#x4E00;&#x4E9B;&#x4E0D;&#x5173;&#x5FC3;&#x7684;&#x94A9;&#x5B50;&#x51FD;&#x6570;
+</code></pre><p>Vue.directive(&quot;color-switch&quot;,function(el,binding){
+    el.style.backgroundColor= binding.value;
+})</p>
+<pre><code>##### &#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;
+1. &#x5982;&#x679C;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x591A;&#x4E2A;&#x503C;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F20;&#x5165;&#x4E00;&#x4E2A;JavaScript&#x5BF9;&#x8C61;&#x5B57;&#x9762;&#x91CF;&#xFF0C;
+2. &#x6307;&#x4EE4;&#x51FD;&#x6570;&#x80FD;&#x591F;&#x63A5;&#x53D7;&#x6240;&#x6709;&#x5408;&#x6CD5;&#x7684;JavaScript&#x8868;&#x8FBE;&#x5F0F;
+</code></pre><p>// &#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6307;&#x4EE4;</p>
+<div v-demo="{ color: &apos;white&apos;, text: &apos;hello!&apos; }"></div>
+
+<p>// &#x4F7F;&#x7528;
+Vue.directive(&apos;demo&apos;, function (el, binding) {
+  console.log(binding.value.color) // =&gt; &quot;white&quot;
+  console.log(binding.value.text)  // =&gt; &quot;hello!&quot;
+})</p>
+<pre><code>
+##### &#x751F;&#x4EA7;&#x73AF;&#x5883;
+&#x5728;webpack 4+&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;mode&#x9009;&#x9879;&#xFF1A;
+</code></pre><p>module.exports = {
+    mode: &apos;production&apos;  // &#x751F;&#x4EA7;&#x73AF;&#x5883;&#x6A21;&#x5F0F;
+}
+<code>``
+Vue&#x6E90;&#x7801;&#x4F1A;&#x6839;&#x636E;</code>process.env.NODE_ENV`&#x6765;&#x51B3;&#x5B9A;&#x662F;&#x5426;&#x542F;&#x7528;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x6A21;&#x5F0F;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E3A;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x6A21;&#x5F0F;  </p>
+<p>&#x9884;&#x7F16;&#x8BD1;&#x6A21;&#x7248;&#x6700;&#x7B80;&#x5355;&#x7684;&#x65B9;&#x5F0F;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x5355;&#x6587;&#x4EF6;&#x7EC4;&#x4EF6;&#xFF0C;&#x76F8;&#x5173;&#x7684;&#x6784;&#x5EFA;&#x8BBE;&#x7F6E;&#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x9884;&#x7F16;&#x8BD1;&#x5904;&#x7406;&#x597D;&#xFF1B;&#x6240;&#x4EE5;&#x6784;&#x5EFA;&#x597D;&#x7684;&#x4EE3;&#x7801;&#x5DF2;&#x7ECF;&#x5305;&#x542B;&#x4E86;&#x7F16;&#x8BD1;&#x51FA;&#x6765;&#x7684;&#x6E32;&#x67D3;&#x51FD;&#x6570;&#x800C;&#x4E0D;&#x662F;&#x539F;&#x59CB;&#x7684;&#x6A21;&#x7248;&#x5B57;&#x7B26;&#x4E32;</p>
+<p>&#x7EC4;&#x4EF6;&#x6E32;&#x67D3;&#x65F6;&#x51FA;&#x73B0;&#x8FD0;&#x884C;&#x65F6;&#x9519;&#x8BEF;&#xFF0C;&#x901A;&#x8FC7; Vue.config.errorHandler &#x914D;&#x7F6E;&#x51FD;&#x6570;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; xiaoqian 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2018-07-17 21:29:04
+</span></footer></div>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Vue-单文件组件.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Vue-单文件组件">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Vue-过渡","level":"6.1","depth":1,"previous":{"title":"Vue-单文件组件","level":"5.1","depth":1,"path":"Vue/Vue-单文件组件.md","ref":"Vue/Vue-单文件组件.md","articles":[]},"dir":"ltr"},"config":{"plugins":["github@^2.0.0","edit-link@^2.0.2","anchors@^0.7.1","include-codeblock@^3.0.2","splitter@^0.0.8","tbfed-pagefooter@^0.0.1","expandable-chapters-small@^0.1.7","anchor-navigation-ex@0.1.8","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © xiaoqian 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/xiaoqian-GUO/Vue-Learning-Notes"},"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"anchor-navigation-ex":{"isRewritePageTitle":false,"tocLevel1Icon":"fa fa-hand-o-right","tocLevel2Icon":"fa fa-hand-o-right","tocLevel3Icon":"fa fa-hand-o-right"},"expandable-chapters-small":{},"include-codeblock":{"check":false,"edit":true,"fixlang":false,"lang":"","template":"ace","theme":"chrome","unindent":true},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/xiaoqian-GUO/Vue-Learning-Notes/README.md"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchors":{}},"theme":"default","author":"xiaoqian ","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"xiaoqian's notes","language":"zh-hans","output.name":"site","links":{"sidebar":{"Home":"https://github.com/xiaoqian-GUO/Vue-Learning-Notes"}},"gitbook":"3.2.3","description":"Vue学习过程中的一些笔记"},"file":{"path":"Vue/Vue-过渡.js.md","mtime":"2018-07-17T13:29:04.050Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-09-02T10:06:25.805Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-edit-link/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
